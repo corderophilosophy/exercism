@@ -5,7 +5,7 @@ var Isogram = function(input) {
 
 Isogram.prototype.isIsogram = function() {
   let arr = this.input
-  .replace(/[^A-Za-zàèéìòóù]+/g, '')
+  .replace(/[^A-Za-zàèéìòóùöäüß]+/g, '')
   .toUpperCase()
   .trim()
   .split('');
