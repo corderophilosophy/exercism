@@ -9,42 +9,42 @@ describe('Anagram', function() {
     expect(matches).toEqual([]);
   });
 
-  xit('detects simple anagram',function() {
+  it('detects simple anagram',function() {
     var subject = new Anagram('ant');
     var matches = subject.matches(['tan', 'stand', 'at']);
 
     expect(matches).toEqual(['tan']);
   });
 
-  xit('does not detect false positives',function() {
+  it('does not detect false positives',function() {
     var subject = new Anagram('galea');
     var matches = subject.matches(['eagle']);
 
     expect(matches).toEqual([]);
   });
 
-  xit('detects multiple anagrams',function() {
+  it('detects multiple anagrams',function() {
     var subject = new Anagram('master');
     var matches = subject.matches(['stream', 'pigeon', 'maters']);
 
     expect(matches).toEqual(['stream', 'maters']);
   });
 
-  xit('does not detect anagram subsets',function() {
+  it('does not detect anagram subsets',function() {
     var subject = new Anagram('good');
     var matches = subject.matches(['dog', 'goody']);
 
     expect(matches).toEqual([]);
   });
 
-  xit('detects anagram',function() {
+  it('detects anagram',function() {
     var subject = new Anagram('listen');
     var matches = subject.matches(['enlists', 'google', 'inlets', 'banana']);
 
     expect(matches).toEqual(['inlets']);
   });
 
-  xit('detects multiple anagrams',function() {
+  it('detects multiple anagrams',function() {
     var subject = new Anagram('allergy');
     var matches = subject.matches(['gallery', 'ballerina', 'regally', 'clergy', 'largely', 'leading']);
 
