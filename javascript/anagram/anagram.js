@@ -1,32 +1,21 @@
-/*
-
-  TODO: Fix count comparison vs multiple-lettered words. That's not a thing, but you'll know what you mean :wink:
-
-*/
-
 var Anagram = function(input) {
   this.original = input;
   this.matched = [];
 };
 
-Anagram.prototype.matches = function(targets) {
-  for (var target of targets) {
-    let data = {};
-    if (target.length == this.original.length) {
-      for (var t of target) {
-        let tgt = target.split('');
-        if (this.original.indexOf(t) == -1) {
-          console.log(`${target} was not an anagram of ${this.original}`);
-        } else {
-          if (data.hasOwnProperty(t)) {
-            data[t]++;
-          } else {
-            data[t] = 1;
-          }
-        }
-        if (Object.keys(data).length == target.length) {
-          this.matched.push(target);
-        }
+Anagram.prototype.matches = function() {
+  var targets = [...arguments];
+  var tgts = targets.reduce(
+    (a, b) => {
+      return a.concat(b);
+    }, []);
+  for (let t of tgts) {
+    if (t.length == this.original.length && t.toLowerCase() != this.original.toLowerCase()) {
+      let tgt = t.toLowerCase().split('').sort();
+      let orig = this.original.toLowerCase().split('').sort();
+      if (tgt.toString() == orig.toString() && t != this.original) {
+        console.log(`t is: ${t}, this.original is: ${this.original}`)
+        this.matched.push(t);
       }
     }
   }
